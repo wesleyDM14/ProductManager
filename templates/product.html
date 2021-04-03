@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Admin {% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h3>Listagem de produtos</h3>
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item">
+                        <a href="{% url 'product_update' product.id %}">{{ product.name }}</a>
+                        <a href="{% url 'product_delete' product.id %}" class="trash-item">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <br>
+            <a href="{% url 'product_add' %}" class="btn btn-primary"> Novo produto</a>
+        </div>
+    </div>
+{% endblock %}
